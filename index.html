@@ -4,195 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Boltx - The Best 👑</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: #050505;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
+            background-color: #050505; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            overflow-x: hidden; position: relative;
         }
-
-        /* خلفية بنمط شبكي وتأثير نيون خفيف */
         body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.08) 0%, rgba(0,0,0,0.9) 100%);
-            z-index: 1;
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(123, 44, 191, 0.15) 0%, rgba(0,0,0,0.95) 100%); z-index: 1;
         }
-
         .screen {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 30px;
-            max-width: 600px;
-            width: 90%;
-            background: rgba(15, 15, 15, 0.85);
-            border: 1px solid #2a2a2a;
-            border-radius: 16px;
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            position: relative; z-index: 10; text-align: center; padding: 35px 25px;
+            max-width: 600px; width: 90%; background: rgba(18, 18, 18, 0.9);
+            border: 1px solid rgba(123, 44, 191, 0.3); border-radius: 20px;
+            box-shadow: 0 0 40px rgba(123, 44, 191, 0.25);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(10px);
         }
-
-        .hidden {
-            display: none;
-            opacity: 0;
-            transform: scale(0.95);
-        }
-
-        /* الشاشة الأولى */
-        h1.welcome-text {
-            font-size: 2.2rem;
-            color: #fff;
-            margin-bottom: 25px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            letter-spacing: 1px;
-        }
-
+        .hidden { display: none; opacity: 0; transform: scale(0.9) translateY(20px); }
+        h1.welcome-text { font-size: 2.2rem; color: #fff; margin-bottom: 25px; text-shadow: 0 0 20px rgba(181, 23, 158, 0.6); letter-spacing: 1px; }
         .epic-btn {
-            background: linear-gradient(135deg, #7b2cbf, #3a0ca3);
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(123, 44, 191, 0.5);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #7b2cbf, #3a0ca3); color: white; border: none;
+            padding: 16px 40px; font-size: 1.2rem; font-weight: bold; border-radius: 30px;
+            cursor: pointer; box-shadow: 0 0 25px rgba(123, 44, 191, 0.6); transition: all 0.3s ease;
         }
-
-        .epic-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(123, 44, 191, 0.8);
-        }
-
-        /* الشاشة الثانية (المحتوى الرئيسي) */
+        .epic-btn:hover { transform: scale(1.06); box-shadow: 0 0 35px rgba(123, 44, 191, 0.9); }
         .badge-container {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(45deg, #ff007f, #7209b7, #4cc9f0);
-            animation: rotateGlow 4s linear infinite;
+            position: relative; width: 140px; height: 140px; margin: 0 auto 20px auto;
+            border-radius: 50%; padding: 4px; background: linear-gradient(45deg, #f72585, #7209b7, #4cc9f0);
+            animation: rotateGlow 3s linear infinite;
         }
-
-        @keyframes rotateGlow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+        @keyframes rotateGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        .badge-container img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background-color: #111; }
+        .title-the-best { font-size: 2rem; color: #f72585; margin-bottom: 15px; font-weight: 800; text-shadow: 0 0 15px rgba(247, 37, 133, 0.5); }
+        .counter-box {
+            background: rgba(255, 255, 255, 0.05); padding: 10px 20px; border-radius: 12px;
+            display: inline-block; margin-bottom: 15px; font-size: 0.95rem; color: #4cc9f0;
+            border: 1px solid rgba(76, 201, 240, 0.2);
         }
-
-        .badge-container img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #111;
-        }
-
-        .title-the-best {
-            font-size: 1.8rem;
-            color: #f72585;
-            margin-bottom: 15px;
-            font-weight: 800;
-            text-shadow: 0 0 10px rgba(247, 37, 133, 0.4);
-        }
-
+        .counter-box span { font-weight: bold; color: #f72585; font-size: 1.1rem; }
         .message-box {
-            background: rgba(25, 25, 25, 0.9);
-            border-right: 4px solid #7209b7;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            text-align: right;
-            line-height: 1.8;
-            font-size: 1rem;
-            color: #dcdcdc;
+            background: rgba(25, 25, 25, 0.95); border-right: 4px solid #7209b7; padding: 20px;
+            margin: 15px 0 15px 0; border-radius: 10px; text-align: right; line-height: 1.8;
+            font-size: 1.05rem; color: #e2e2e2; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
-
-        .message-box span.from {
-            display: block;
-            margin-top: 10px;
-            color: #4cc9f0;
-            font-weight: bold;
-            text-align: left;
+        .message-box span.from { display: block; margin-top: 12px; color: #4cc9f0; font-weight: bold; text-align: left; font-size: 0.95rem; }
+        
+        .social-links {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 15px 0;
         }
+        .social-btn {
+            background: rgba(255, 255, 255, 0.08); color: #fff; text-decoration: none;
+            padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease;
+        }
+        .social-btn:hover { background: rgba(123, 44, 191, 0.4); border-color: #7b2cbf; transform: translateY(-2px); }
+        .social-btn.kick { background: linear-gradient(135deg, #00b12a, #007a1c); border: none; box-shadow: 0 0 15px rgba(0, 177, 42, 0.4); }
 
+        .videos-title { font-size: 1.2rem; color: #fff; margin: 15px 0 10px 0; font-weight: bold; }
+        .video-embed { margin-bottom: 12px; border-radius: 12px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        
         .vote-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #f72585, #b5179e);
-            color: white;
-            text-decoration: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 35px;
-            margin-top: 15px;
-            box-shadow: 0 0 25px rgba(247, 37, 133, 0.6);
-            transition: all 0.3s ease;
+            display: inline-block; background: linear-gradient(135deg, #f72585, #b5179e); color: white;
+            text-decoration: none; padding: 16px 45px; font-size: 1.25rem; font-weight: bold;
+            border-radius: 35px; box-shadow: 0 0 30px rgba(247, 37, 133, 0.7);
+            transition: all 0.3s ease; margin-top: 15px;
         }
-
-        .vote-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 35px rgba(247, 37, 133, 0.9);
-        }
+        .vote-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 0 45px rgba(247, 37, 133, 1); }
     </style>
 </head>
 <body>
 
-    <!-- الشاشة الأولى: الترحيب -->
     <div id="screen-1" class="screen">
         <h1 class="welcome-text">welcome Ali Boltx 😈🔥</h1>
         <button class="epic-btn" onclick="revealSurprise()">اضغط هنا لاكتشاف المفاجأة 🚀</button>
     </div>
 
-    <!-- الشاشة الثانية: المفاجأة وتفاصيل التصويت -->
     <div id="screen-2" class="screen hidden">
-        <!-- صورة بولتكس أو شعار The Best (يمكنك استبدال رابط الصورة برابط صورتك المفضلة له) -->
+        
         <div class="badge-container">
             <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=300&auto=format&fit=crop&q=80" alt="Ali Boltx">
         </div>
 
         <div class="title-the-best">Ali Boltx - The Best 🏆</div>
 
+        <div class="counter-box">
+            إجمالي أصوات الجيش العظيم الآن: <span id="votesCount">12,849</span> صوت ⚡
+        </div>
+
         <div class="message-box">
-            عزيزي بولتكس، من وسط كل الليفات، والضحكات، والذكريات اللي عشناها سوا، جاب الوقت اللي نقولك فيه إنك فعلاً الأفضل بكل جدارة واستحقاق. مجهودك وتعبك وروحك الحلوة مع الكومميونيتي دايمًا بتثبت إنك رقم واحد بلا منازع. مكملين في ضهرك دايماً، واعتبرها مننا أحلى دفعة للأمام لحد ما تاخد التتويج اللي بتستحقه! 🚀❤️
+            عزيزي بولتكس، من وسط كل الليفات، والضحكات، والذكريات اللي عشناها سوا، جه الوقت اللي نقولك فيه إنك فعلاً الأفضل بكل جدارة واستحقاق. مجهودك وتعبك وروحك الحلوة مع الكومميونيتي دايمًا بتثبت إنك رقم واحد بلا منازع. مكملين في ضهرك دايماً، واعتبرها مننا أحلى دفعة للأمام لحد ما تاخد التتويج اللي بتستحقه! 🚀❤️
             <span class="from">~ من محبيك وعشاق بثوثك 🖤</span>
         </div>
 
-        <!-- ضع هنا رابط التصويت الحقيقي مكان علامة الـ # -->
-        <a href="https://tr.ee/VlxJrZgwWF" target="_blank" class="vote-btn">اذهب للتصويت 🗳️🔥</a>
+        <!-- روابط السوشيال ميديا -->
+        <div class="social-links">
+            <a href="https://tr.ee/BBkjErru8h" target="_blank" class="social-btn kick">🟢 Kick (الأهم)</a>
+            <a href="https://tr.ee/ahkxOy0q3N" target="_blank" class="social-btn">📺 يوتيوب</a>
+            <a href="https://www.tiktok.com/@3li_boltx?_r=1&_t=ZS-9AaVwnraLuX" target="_blank" class="social-btn">🎵 تيك توك</a>
+            <a href="https://tr.ee/qDuv2Xm5PW" target="_blank" class="social-btn">📸 انستجرام</a>
+            <a href="https://tr.ee/xRZrkT_k6j" target="_blank" class="social-btn">💬 ديسكورد</a>
+            <a href="https://tr.ee/eq95g5Rgnc" target="_blank" class="social-btn">📢 قناة الواتس</a>
+        </div>
+
+        <div class="videos-title">أشهر الفيديوهات:</div>
+        
+        <div class="video-embed">
+            <iframe width="100%" height="180" src="https://www.youtube.com/embed/PCJpLLDOFkM" title="Video 1" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-embed">
+            <iframe width="100%" height="180" src="https://www.youtube.com/embed/NwdOUad2A9w" title="Video 2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-embed">
+            <iframe width="100%" height="180" src="https://www.youtube.com/embed/DASeULB40RU" title="Video 3" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <a href="https://tr.ee/VlxJrZgwWF" target="_blank" class="vote-btn">اذهب للتصويت الآن 🗳️🔥</a>
     </div>
 
     <script>
         function revealSurprise() {
             const screen1 = document.getElementById('screen-1');
             const screen2 = document.getElementById('screen-2');
-            
             screen1.style.opacity = '0';
-            screen1.style.transform = 'scale(0.9)';
-            
+            screen1.style.transform = 'scale(0.8)';
             setTimeout(() => {
                 screen1.classList.add('hidden');
                 screen2.classList.remove('hidden');
-                screen2.style.opacity = '1';
-                screen2.style.transform = 'scale(1)';
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                }
+                setTimeout(() => {
+                    screen2.style.opacity = '1';
+                    screen2.style.transform = 'scale(1) translateY(0)';
+                }, 50);
             }, 400);
         }
+        setInterval(() => {
+            const el = document.getElementById('votesCount');
+            if(el) {
+                let current = parseInt(el.innerText.replace(/,/g, ''));
+                el.innerText = (current + Math.floor(Math.random() * 3) + 1).toLocaleString();
+            }
+        }, 3000);
     </script>
 
 </body>
