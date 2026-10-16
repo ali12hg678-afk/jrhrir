@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Boltx - The Best 👑</title>
+    <title>Ali Boltx - The Best 👑 Winner</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,8 +31,21 @@
             cursor: pointer; box-shadow: 0 0 25px rgba(123, 44, 191, 0.6); transition: all 0.3s ease;
         }
         .epic-btn:hover { transform: scale(1.06); box-shadow: 0 0 35px rgba(123, 44, 191, 0.9); }
-        .title-the-best { font-size: 2.3rem; color: #f72585; margin-bottom: 10px; font-weight: 800; text-shadow: 0 0 20px rgba(247, 37, 133, 0.6); }
-        .subtitle-legend { font-size: 1.1rem; color: #4cc9f0; margin-bottom: 20px; font-weight: bold; letter-spacing: 2px; }
+        .badge-container {
+            position: relative; width: 140px; height: 140px; margin: 0 auto 20px auto;
+            border-radius: 50%; padding: 4px; background: linear-gradient(45deg, #f72585, #7209b7, #4cc9f0);
+            animation: rotateGlow 3s linear infinite; display: flex; align-items: center; justify-content: center;
+        }
+        @keyframes rotateGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        /* هنا الكود اللي بيعرض الصورة الجديدة كخلفية */
+        .badge-container::after {
+            content: ""; display: block; width: 100%; height: 100%; border-radius: 50%;
+            background-color: #111;
+            background-size: cover; background-position: center;
+            /* هحط كود قاعدة الصورة الكبيرة هنا */
+            background-image: url('data:image/jpeg;base64,...(كود قاعدة الصورة)...'); 
+        }
+        .title-the-best { font-size: 2rem; color: #f72585; margin-bottom: 15px; font-weight: 800; text-shadow: 0 0 15px rgba(247, 37, 133, 0.5); }
         .counter-box {
             background: rgba(255, 255, 255, 0.05); padding: 10px 20px; border-radius: 12px;
             display: inline-block; margin-bottom: 15px; font-size: 0.95rem; color: #4cc9f0;
@@ -78,26 +91,28 @@
 
     <div id="screen-2" class="screen hidden">
         
-        <div class="title-the-best">ALI BOLTX</div>
-        <div class="subtitle-legend">THE LEGEND & THE BEST 👑🔥</div>
+        <div class="badge-container">
+            <!-- الصورة محطوطة كخلفية في الـ CSS فوق -->
+        </div>
+
+        <div class="title-the-best">Ali Boltx - The Best 🏆 Winner</div>
 
         <div class="counter-box">
-            إجمالي أصوات الجيش العظيم الآن: <span id="votesCount">40,528</span> صوت ⚡
+            إجمالي أصوات الجيش العظيم الآن: <span id="votesCount">40,338</span> صوت ⚡
         </div>
 
         <div class="message-box">
-            القايئد بولتكس، من وسط كل الليفات، والضحكات، والذكريات اللي عشناها سوا، جه الوقت اللي نقولك فيه إنك فعلاً الأفضل بكل جدارة واستحقاق. مجهودك وتعبك وروحك الحلوة مع الكومميونيتي دايمًا بتثبت إنك رقم واحد بلا منازع. مكملين في ضهرك دايماً، واعتبرها مننا أحلى دفعة للأمام لحد ما تاخد التتويج اللي بتستحقه! 🚀❤️
+            عزيزي بولتكس، من وسط كل الليفات، والضحكات، والذكريات اللي عشناها سوا، جه الوقت اللي نقولك فيه إنك فعلاً الأفضل بكل جدارة واستحقاق. مجهودك وتعبك وروحك الحلوة مع الكومميونيتي دايمًا بتثبت إنك رقم واحد بلا منازع. مكملين في ضهرك دايماً، واعتبرها مننا أحلى دفعة للأمام لحد ما تاخد التتويج اللي بتستحقه! 🚀❤️
             <span class="from">~ من محبيك وعشاق بثوثك 🖤</span>
         </div>
 
-        <!-- روابط السوشيال ميديا -->
+        <!-- روابط السوشيال ميديا (محدّثة بأزرار Post) -->
         <div class="social-links">
             <a href="https://tr.ee/BBkjErru8h" target="_blank" class="social-btn kick">🟢 Kick (الأهم)</a>
             <a href="https://tr.ee/ahkxOy0q3N" target="_blank" class="social-btn">📺 يوتيوب</a>
-            <a href="https://tr.ee/3li_boltx" target="_blank" class="social-btn">🎵 تيك توك</a>
+            <a href="https://tr.ee/eq95g5Rgnc" target="_blank" class="social-btn">📢 قناة الواتس</a>
             <a href="https://tr.ee/qDuv2Xm5PW" target="_blank" class="social-btn">📸 انستجرام</a>
             <a href="https://tr.ee/xRZrkT_k6j" target="_blank" class="social-btn">💬 ديسكورد</a>
-            <a href="https://tr.ee/eq95g5Rgnc" target="_blank" class="social-btn">📢 قناة الواتس</a>
         </div>
 
         <div class="videos-title">أشهر الفيديوهات:</div>
@@ -124,6 +139,7 @@
             setTimeout(() => {
                 screen1.classList.add('hidden');
                 screen2.classList.remove('hidden');
+                // تأثير الكونفيتي عند الفتح
                 if (typeof confetti === 'function') {
                     confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
                 }
@@ -133,6 +149,8 @@
                 }, 50);
             }, 400);
         }
+
+        // عداد وهمي للأصوات يزيد كل كام ثانية
         setInterval(() => {
             const el = document.getElementById('votesCount');
             if(el) {
