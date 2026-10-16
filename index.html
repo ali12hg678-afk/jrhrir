@@ -31,6 +31,13 @@
             cursor: pointer; box-shadow: 0 0 25px rgba(123, 44, 191, 0.6); transition: all 0.3s ease;
         }
         .epic-btn:hover { transform: scale(1.06); box-shadow: 0 0 35px rgba(123, 44, 191, 0.9); }
+        .badge-container {
+            position: relative; width: 140px; height: 140px; margin: 0 auto 20px auto;
+            border-radius: 50%; padding: 4px; background: linear-gradient(45deg, #f72585, #7209b7, #4cc9f0);
+            animation: rotateGlow 3s linear infinite;
+        }
+        @keyframes rotateGlow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        .badge-container img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background-color: #111; }
         .title-the-best { font-size: 2rem; color: #f72585; margin-bottom: 15px; font-weight: 800; text-shadow: 0 0 15px rgba(247, 37, 133, 0.5); }
         .counter-box {
             background: rgba(255, 255, 255, 0.05); padding: 10px 20px; border-radius: 12px;
@@ -77,14 +84,18 @@
 
     <div id="screen-2" class="screen hidden">
         
+        <div class="badge-container">
+            <img src="watermarked_img_1588453147092205921.jpg" alt="Ali Boltx The Best Winner">
+        </div>
+
         <div class="title-the-best">Ali Boltx - The Best 🏆</div>
 
         <div class="counter-box">
-            إجمالي أصوات الجيش العظيم الآن: <span id="votesCount">40,337</span> صوت ⚡
+            إجمالي أصوات الجيش العظيم الآن: <span id="votesCount">40,430</span> صوت ⚡
         </div>
 
         <div class="message-box">
-            القاىئد بولتكس، من وسط كل الليفات، والضحكات، والذكريات اللي عشناها سوا، جه الوقت اللي نقولك فيه إنك فعلاً الأفضل بكل جدارة واستحقاق. مجهودك وتعبك وروحك الحلوة مع الكومميونيتي دايمًا بتثبت إنك رقم واحد بلا منازع. مكملين في ضهرك دايماً، واعتبرها مننا أحلى دفعة للأمام لحد ما تاخد التتويج اللي بتستحقه! 🚀❤️
+            القايئد بولتكس، من وسط كل الليفات، والضحكات، والذكريات اللي عشناها سوا، جه الوقت اللي نقولك فيه إنك فعلاً الأفضل بكل جدارة واستحقاق. مجهودك وتعبك وروحك الحلوة مع الكومميونيتي دايمًا بتثبت إنك رقم واحد بلا منازع. مكملين في ضهرك دايماً، واعتبرها مننا أحلى دفعة للأمام لحد ما تاخد التتويج اللي بتستحقه! 🚀❤️
             <span class="from">~ من محبيك وعشاق بثوثك 🖤</span>
         </div>
 
@@ -92,7 +103,7 @@
         <div class="social-links">
             <a href="https://tr.ee/BBkjErru8h" target="_blank" class="social-btn kick">🟢 Kick (الأهم)</a>
             <a href="https://tr.ee/ahkxOy0q3N" target="_blank" class="social-btn">📺 يوتيوب</a>
-            <a href="https://www.tiktok.com/@3li_boltx?_r=1&_t=ZS-9AaVwnraLuX" target="_blank" class="social-btn">🎵 تيك توك</a>
+            <a href="https://tr.ee/3li_boltx" target="_blank" class="social-btn">🎵 تيك توك</a>
             <a href="https://tr.ee/qDuv2Xm5PW" target="_blank" class="social-btn">📸 انستجرام</a>
             <a href="https://tr.ee/xRZrkT_k6j" target="_blank" class="social-btn">💬 ديسكورد</a>
             <a href="https://tr.ee/eq95g5Rgnc" target="_blank" class="social-btn">📢 قناة الواتس</a>
@@ -142,3 +153,4 @@
 
 </body>
 </html>
+```[cite: 6]
